@@ -13,6 +13,11 @@ resource "aws_instance" "spring-boot-api" {
 
 output "EC2_IP_Address" {
   description = "EC2 IP Address"
+  value       = "${aws_instance.spring-boot-api.public_ip}"
+}
+
+output "EC2_API_PATH" {
+  description = "EC2 API PATH"
   value       = "http://${aws_instance.spring-boot-api.public_ip}:${var.backend_port}"
 }
 
