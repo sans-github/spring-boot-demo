@@ -16,7 +16,7 @@ function testGet() {
 }
 
 function testPost() {
-    _testSetAPIPath
+  _testSetAPIPath
   if [ "$#" -ne 1 ]; then
     echo "Missing param"
     echo "$funcname author_id"
@@ -60,9 +60,9 @@ function _testApiPost() {
 function _testSetAPIPath() {
   local TF_URL=$(terraform output -raw api_invoke_base_url 2>/dev/null)
 
-  if [[ -n "$TF_URL" ]]; then
+  if [[ -n "$TF_URL" && "$TF_URL" != *"No outputs found"* ]]; then
     URL_BASE="$TF_URL"
-    echo "Terraform API URL set: $URL_BASE"
   fi
+
   echo "URL_BASE: $URL_BASE"
 }
