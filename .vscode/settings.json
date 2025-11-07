@@ -1,0 +1,12 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.compile.nullAnalysis.mode": "automatic",
+
+  "files.exclude": {
+    "**/.terraform": true,
+    "**/.terraform.lock.hcl": true,
+    "**/terraform.tfstate": true,
+    "**/terraform.tfstate.backup": true,
+    "**/target": true
+  }
+}
