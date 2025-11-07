@@ -1,5 +1,7 @@
 package com.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +19,7 @@ public class Author {
     private Integer id;
 
     @Column(name = "author_id")
+    @JsonProperty("author_id")
     private Integer authorId;
 
     @Column(name = "name")
