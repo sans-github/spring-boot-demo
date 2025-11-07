@@ -28,7 +28,7 @@ function testPost() {
 
   POST_BODY=$(cat << EOF
   {
-    "authorId": $AUTHOR_ID,
+    "author_id": $AUTHOR_ID,
     "name": "Billy Baker"
   }
 EOF

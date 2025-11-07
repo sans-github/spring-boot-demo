@@ -19,12 +19,12 @@ public class Author {
     private Integer id;
 
     @Column(name = "author_id")
-    @JsonProperty("author_id")
     private Integer authorId;
 
     @Column(name = "name")
     private String name;
 
+    @JsonProperty("author_id")
     public Integer getAuthorId() {
         return authorId;
     }
