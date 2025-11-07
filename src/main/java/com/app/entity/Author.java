@@ -24,6 +24,7 @@ public class Author {
     @Column(name = "name")
     private String name;
 
+
     @JsonProperty("author_id")
     public Integer getAuthorId() {
         return authorId;
@@ -40,5 +41,4 @@ public class Author {
     public void setName(String name) {
         this.name = name;
     }
-
 }

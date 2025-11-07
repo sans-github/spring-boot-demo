@@ -58,7 +58,11 @@ function _testApiPost() {
 }
 
 function _testSetAPIPath() {
-  if terraform output -raw api_invoke_base_url >/dev/null 2>&1; then
-    URL_BASE="$(terraform output -raw api_invoke_base_url)"
+  local TF_URL=$(terraform output -raw api_invoke_base_url 2>/dev/null)
+
+  if [[ -n "$TF_URL" ]]; then
+    URL_BASE="$TF_URL"
+    echo "Terraform API URL set: $URL_BASE"
   fi
+  echo "URL_BASE: $URL_BASE"
 }

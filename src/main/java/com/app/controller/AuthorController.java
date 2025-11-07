@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.Author;
 import com.app.repository.AuthorService;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import jakarta.validation.constraints.NotNull;
 
@@ -21,17 +19,13 @@ public class AuthorController {
 	@Autowired
 	private AuthorService authorService; 
 
-	private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
 	@GetMapping
-	public String firstFindById(@RequestParam("author_id") Integer authorId) {
-		Author author = authorService.findFirstByAuthorId(authorId);
-		return gson.toJson(author);
+	public Author firstFindById(@RequestParam("author_id") Integer authorId) {
+		return authorService.findFirstByAuthorId(authorId);
 	}
 
 	@PostMapping
-	public String saveAuthor(@RequestBody @NotNull Author author) {
-		Author authorSaved = authorService.save(author);
-		return gson.toJson(authorSaved);
+	public Author saveAuthor(@RequestBody @NotNull Author author) {
+		return authorService.save(author);
 	}
 }
