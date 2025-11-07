@@ -5,6 +5,10 @@ resource "aws_instance" "spring-boot-api" {
   vpc_security_group_ids = [aws_security_group.ec2-spring-boot-api_security_group.id]
   key_name               = aws_key_pair.aws_key_pair.key_name
   user_data = file("setup-app.sh")
+  
+  tags = {
+    Name = "spring-boot-api-instance"
+  }
 }
 
 output "EC2_IP_Address" {

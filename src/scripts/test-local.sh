@@ -1,6 +1,7 @@
 URL_BASE="http://localhost:8080/author"
 
 function testGet() {
+  _testSetAPIPath
   if [ "$#" -eq 1 ]; then
     local AUTHOR_ID=$1
   else
@@ -15,6 +16,7 @@ function testGet() {
 }
 
 function testPost() {
+    _testSetAPIPath
   if [ "$#" -ne 1 ]; then
     echo "Missing param"
     echo "$funcname author_id"
@@ -32,10 +34,10 @@ function testPost() {
 EOF
 )
   echo "$POST_BODY"
-  _apiPost "$URL_BASE" "$POST_BODY"
+  _testApiPost "$URL_BASE" "$POST_BODY"
 }
 
-function _apiPost() {
+function _testApiPost() {
   local URL_BASE=$1
   local POST_BODY="$2"
   
@@ -44,7 +46,7 @@ function _apiPost() {
   echo "$RESPONSE" | jq empty
   exit_status=$?
 
-  echo "\n=POST $URL=\n";
+  echo "\n=POST $URL_BASE=\n";
   if [ $exit_status -eq 0 ]; then
     echo "$RESPONSE" | python3 -m json.tool;
   else 
@@ -53,4 +55,10 @@ function _apiPost() {
   fi
 
   echo "\n==\n";
+}
+
+function _testSetAPIPath() {
+  if terraform output -raw api_invoke_base_url >/dev/null 2>&1; then
+    URL_BASE="$(terraform output -raw api_invoke_base_url)"
+  fi
 }
