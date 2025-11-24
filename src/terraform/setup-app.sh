@@ -12,13 +12,13 @@ sudo timedatectl set-timezone America/Los_Angeles
 sudo dnf update -y
 
 # Install dependencies
-echo "Installing gittt"
+echo "Installing git"
 sudo dnf install -y git 
 
-echo "Installing javaaa"
+echo "Installing java"
 sudo dnf install -y java-21-amazon-corretto-devel 
 
-echo "Installing mavennn"
+echo "Installing maven"
 sudo dnf install -y maven
 
 # Set path for JAVA_HOME
