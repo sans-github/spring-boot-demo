@@ -1,5 +1,5 @@
-# HOST=localhost
-HOST=52.53.228.183
+HOST=localhost
+# HOST=52.53.228.183
 URL_BASE="http://"$HOST":8080/author"
 
 function testGet() {
