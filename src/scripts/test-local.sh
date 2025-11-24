@@ -1,4 +1,6 @@
-URL_BASE="http://localhost:8080/author"
+# HOST=localhost
+HOST=52.53.228.183
+URL_BASE="http://"$HOST":8080/author"
 
 function testGet() {
   _testSetAPIPath
@@ -37,6 +39,20 @@ EOF
   _testApiPost "$URL_BASE" "$POST_BODY"
 }
 
+function testSshEC2Notes() {
+  _testApiLoadOnClipboard "ssh -i ~/.ssh/tf_ec2_key.pem ec2-user@"$HOST
+  
+  _testApiLoadOnClipboard "cat /var/log/cloud-init-output.log"
+
+  _testApiLoadOnClipboard "cat /tmp/logs/access*"
+}
+
+function _testApiLoadOnClipboard() {
+  echo "$1"
+  echo "$1" | pbcopy
+  sleep 1
+}
+
 function _testApiPost() {
   local URL_BASE=$1
   local POST_BODY="$2"
@@ -66,3 +82,4 @@ function _testSetAPIPath() {
 
   echo "URL_BASE: $URL_BASE"
 }
+
