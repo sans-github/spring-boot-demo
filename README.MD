@@ -1,14 +1,20 @@
 # Project summary
 Sample spring app, deployed on EC2 with terraform. Uses H2 in memory DB. 
 
-# Building 
+# Build
+## Maven
 ```
 mvn clean install
+```
 
-Or 
+## Docker
+```
 docker build -t spring-boot-demo .
 docker run -p 8080:8080 spring-boot-demo
 ```
+
+## Github workflow
+The workflow builds and pushes the docker image to [GHCR](http://ghcr.io/sans-github/spring-boot-demo:latest)
 
 # Author API Endpoints 
 
