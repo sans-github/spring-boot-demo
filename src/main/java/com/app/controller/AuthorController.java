@@ -1,4 +1,4 @@
-package com.app.controller;
+package com.app.controller; // trigger
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.entity.Author;
-import com.app.repository.AuthorService;
+import com.app.service.AuthorService;
 
 import jakarta.validation.constraints.NotNull;
 

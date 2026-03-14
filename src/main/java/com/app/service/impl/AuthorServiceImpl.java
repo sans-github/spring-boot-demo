@@ -1,11 +1,11 @@
-package com.app.repository.impl;
+package com.app.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.entity.Author;
-import com.app.repository.AuthorService;
-import com.app.service.AuthorRepository;
+import com.app.service.AuthorService;
+import com.app.repository.AuthorRepository;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {

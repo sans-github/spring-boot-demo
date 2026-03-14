@@ -1,4 +1,4 @@
-package com.app.repository;
+package com.app.service;
 
 import com.app.entity.Author;
 

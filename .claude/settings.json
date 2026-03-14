@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat); echo \"$input\" | grep -q '\\.java' || exit 0; echo '>>> PRE HOOK: running mvn clean verify...' > /dev/tty && mvn clean verify 2>&1 | tee /dev/tty || exit 2"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/bash .claude/post-verify.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

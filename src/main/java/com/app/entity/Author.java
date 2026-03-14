@@ -24,7 +24,6 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-
     @JsonProperty("author_id")
     public Integer getAuthorId() {
         return authorId;
